@@ -1,0 +1,29 @@
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+
+# Swap the comments on the following lines if you don't wish to use zero-installs
+# Documentation here: https://yarnpkg.com/features/zero-installs
+!/.yarn/cache
+#/.pnp.*
+node_modules/
+dist/
+build/
+coverage/
+_/
+
+*.tsbuildinfo
+*.pid
+test-results.xml
+.nyc_output/
+.idea/dataSources/
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+*.secret.source
+secret.source
+*.secret.sh
+*.stackdump
+.turbo
+.turbo-cache
