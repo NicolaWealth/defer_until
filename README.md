@@ -1,20 +1,26 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+The `defer_until` package enables many functions to be added to a deferred stack, which can then be executed at any time.
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Installation
+This package should be installed via npm. You must have npm installed first. The following can be run on the commandline to install the `defer_until` package with npm:
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+`npm install @nicola_wealth/defer_until`
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Usage
+This package provides functionality to continuously add void functions with no arguments to a stack and then call the entire stack of functions at a later point.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+In a simple use-case, a single function can be deferred to be called at a later point. In more complex cases, any number of functions can be added at a variety of points in the code to all be called at a later point simultaneously in last-in-first-out (LIFO) order.
+
+After the stack is used to call all stored functions, the stack is emptied.
+
+# Interface
+The `defer_until` package provides the function `deferUntilFactory` which returns an instance of the object `deferUntilType` with the following properties:
+- `defer(handler: () => void);` is used to pass handler functions which will be added to a stack of existing handler functions to all be called upon at a later time
+- `later();` is used to call all the handler functions currently in the stack, following a LIFO convention, leaving the stack empty
+
+# Testing
+Tests can be found in `defer_until.test.ts` located in `defer_until/src` and should be run with sinon, mocha and nyc.
+
+
+
+
