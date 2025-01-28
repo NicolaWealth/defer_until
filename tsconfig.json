@@ -22,6 +22,7 @@
     "removeComments": false,
     "allowSyntheticDefaultImports": true,
     "lib": [ "esnext" ],
-    "newLine": "LF"
+    "newLine": "LF",
+    "outDir": "dist"
   }
 }
