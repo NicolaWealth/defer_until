@@ -1,5 +1,5 @@
 # Workflow Name
-name: Automatic Testing Upon Push to Main
+name: Tests Passing
 # Set Event Which Triggers Workflow
 on:
   push:
