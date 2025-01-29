@@ -1,8 +1,8 @@
 {
   "name": "@nicola_wealth/defer_until",
   "version": "0.1.0",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "author": "Nicola Wealth Inc",
   "contributors": [
     {
@@ -31,6 +31,9 @@
     "cover": "nyc mocha",
     "cover:report": "nyc --reporter=html --reporter=text mocha -c --reporter=spec",
     "doc": "npx typedoc src/*.ts src/**/*.ts --out dist/doc"
+  },
+  "engines": {
+    "node": "^22"
   },
   "dependencies": {},
   "devDependencies": {

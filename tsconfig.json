@@ -23,6 +23,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": [ "esnext" ],
     "newLine": "LF",
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "src"
   }
 }
