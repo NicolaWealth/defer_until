@@ -25,5 +25,8 @@
     "newLine": "LF",
     "outDir": "dist",
     "rootDir": "src"
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
 }
