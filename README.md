@@ -1,3 +1,5 @@
+![Tests Passing](https://github.com/NicolaWealth/defer_until/actions/workflows/autoTestMainBadge.yml/badge.svg)
+
 # Introduction 
 The `defer_until` package enables many functions to be added to a deferred stack, which can then be executed at any time.
 
