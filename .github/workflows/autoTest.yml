@@ -1,0 +1,27 @@
+# Workflow Name
+name: Automatic Testing Upon PR
+# Set Event Which Triggers Workflow (Pull Request on Main)
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    # Using Ubuntun (most common OS used with github actions but can also linux, and some other options)  
+    runs-on: ubuntu-latest 
+    container:
+      # Using Node JS Version 22
+      image: node:22 
+    steps:
+      # Checkout Code    
+      - uses: actions/checkout@v3
+        with:
+          node-version: 22
+      # Install Dependencies          
+      - run: npm ci
+      # Run Tests      
+      - run: npm test
+      # Run Build Script      
+      - run: npm run build                                                          
+
