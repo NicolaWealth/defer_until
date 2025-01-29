@@ -24,7 +24,7 @@ jobs:
       # Install Dependencies
       - run: npm ci
       # Run Coverage Report
-      - run: npm run coverage:report
+      - run: npm run cover:report
 
       - uses: codecov/codecov-action@v3
         with:
