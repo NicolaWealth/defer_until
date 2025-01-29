@@ -27,4 +27,11 @@ describe("defer_until tests", () => {
     sinon.assert.calledOnce(func1);
     sinon.assert.calledOnce(func2);
   });
+  it("this test should fail", async () => {
+    const deferralsT3 = deferUntilFactory();
+    const func1 = sinon.stub();
+    deferralsT3.defer(func1);
+    deferralsT3.later();
+    sinon.assert.notCalled(func1);
+  });
 });
