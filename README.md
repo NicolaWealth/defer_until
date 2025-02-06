@@ -6,7 +6,7 @@ The `defer_until` package enables many functions to be added to a deferred stack
 # Installation
 This package should be installed via npm. You must have npm installed first. The following can be run on the commandline to install the `defer_until` package with npm:
 
-`npm install @nicola_wealth/defer_until`
+`npm install @nicolawealth/defer_until`
 
 # Usage
 This package provides functionality to continuously add void functions with no arguments to a stack and then call the entire stack of functions at a later point.
