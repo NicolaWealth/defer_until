@@ -29,8 +29,12 @@ jobs:
         run: |
           echo "Coverage Value is: ${{ env.COVERAGE }}"
 
+      - name: Mark the repository as safe
+        run: git config --global --add safe.directory /__w/defer_until/defer_until
+
       - name: Update README.md with coverage value
         run: |
+          git checkout -b coverageUpdate/main
           sed -i "s|!\\[Coverage Badge\\](.*)|![Coverage Badge](https://img.shields.io/badge/coverage-${{ env.COVERAGE }}%25-green)|" README.md
 
       - name: Push changes to main
