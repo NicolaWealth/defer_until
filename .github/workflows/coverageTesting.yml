@@ -1,6 +1,5 @@
-# Workflow Name
+
 name: Automatic Coverage Reporting Upon Merge
-# Set Event Which Triggers Workflow (Pull Request on Main or Push to Main)
 on:
   push:
     branches:
@@ -11,23 +10,34 @@ on:
 
 jobs:
   test:
-    # Using Ubuntun (most common OS used with github actions but can also linux, and some other options)
     runs-on: ubuntu-latest
     container:
-      # Using Node JS Version 22
       image: node:22
     steps:
-      # Checkout Code
       - uses: actions/checkout@v3
         with:
           node-version: 22
-      # Install Dependencies
       - run: npm ci
-      # Run Coverage Report
       - run: npm run cover:report
 
-      - uses: codecov/codecov-action@v3
-        with:
-          files: ./coverage/lcov.info
-          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run coverage extraction script
+        id: extract_coverage
+        run: |
+          COVERAGE=$(node extractCoverage.js)
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV 
+
+      - name: Update README.md with coverage value
+        run: |
+          sed -i "s|!\\[Coverage Badge\\](.*)|![Coverage Badge](https://img.shields.io/badge/coverage-${{ env.COVERAGE }}%25-green)|" README.md
+      
+          git add README.md
+          git commit -m "Automated commit"
+
+      - name: Push changes to main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
+          git push origin main
+      
 
