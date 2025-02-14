@@ -12,7 +12,5 @@ for (let path in coverageData) {
   totalStatements += Object.keys(statementMap).length;
   coveredStatements += Object.values(statementMap).filter((value: number) => value > 0).length;
 }
-
 const coveragePercentage = (coveredStatements / totalStatements) * 100;
-
 console.log(coveragePercentage.toFixed(2));
