@@ -29,7 +29,7 @@
     "test": "mocha",
     "test-r": "mocha -R spec",
     "cover": "nyc mocha",
-    "cover:report": "nyc --reporter=html --reporter=lcov --reporter=text mocha -c --reporter=spec",
+    "cover:report": "nyc --reporter=html --reporter=lcov --reporter=text  --reporter=json mocha -c --reporter=spec",
     "doc": "npx typedoc src/*.ts src/**/*.ts --out dist/doc"
   },
   "engines": {
