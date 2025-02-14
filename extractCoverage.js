@@ -13,6 +13,4 @@ for (var path in coverageData) {
     coveredStatements += Object.values(statementMap).filter(function (value) { return value > 0; }).length;
 }
 var coveragePercentage = (coveredStatements / totalStatements) * 100;
-console.log("Total: " + totalStatements);
-console.log("Covered: " + coveredStatements);
-console.log("Cov Percentage: " + coveragePercentage.toFixed(2) + "%");
+console.log(coveragePercentage.toFixed(2));

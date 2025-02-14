@@ -15,6 +15,4 @@ for (let path in coverageData) {
 
 const coveragePercentage = (coveredStatements / totalStatements) * 100;
 
-console.log("Total: " + totalStatements);
-console.log("Covered: " + coveredStatements);
-console.log("Cov Percentage: " + coveragePercentage.toFixed(2) + "%");
+console.log(coveragePercentage.toFixed(2));
