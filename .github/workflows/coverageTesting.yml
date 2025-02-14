@@ -6,6 +6,9 @@ on:
       - main
     if: github.actor != 'github-actions[bot]'
 
+  permissions:
+    contents: write  # Ensure GITHUB_TOKEN has write access
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -18,8 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run cover:report
 
-      - permissions:
-        contents: write  # Ensure GITHUB_TOKEN has write access
+
 
       - name: Run coverage extraction script
         id: extract_coverage
