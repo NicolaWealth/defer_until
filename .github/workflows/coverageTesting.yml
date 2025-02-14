@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      -main
+    if: github.actor != 'github-actions[bot]'
 
 jobs:
   test:
@@ -24,19 +22,23 @@ jobs:
         id: extract_coverage
         run: |
           COVERAGE=$(node extractCoverage.js)
-          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV 
+          COVERAGE=$(echo $COVERAGE | xargs)  # Trim any extra spaces
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+
+      - name: Print Coverage Value
+        run: |
+          echo "Coverage Value is: ${{ env.COVERAGE }}"
 
       - name: Update README.md with coverage value
         run: |
           sed -i "s|!\\[Coverage Badge\\](.*)|![Coverage Badge](https://img.shields.io/badge/coverage-${{ env.COVERAGE }}%25-green)|" README.md
-      
-          git add README.md
-          git commit -m "Automated commit"
 
       - name: Push changes to main
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
+          git add README.md
+          git commit -m "Automated commit"
           git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
           git push origin main
       
