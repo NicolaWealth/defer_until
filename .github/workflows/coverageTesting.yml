@@ -6,8 +6,8 @@ on:
       - main
     if: github.actor != 'github-actions[bot]'
 
-  permissions:
-    contents: write  # Ensure GITHUB_TOKEN has write access
+permissions:
+  contents: write  # Ensure GITHUB_TOKEN has write access
 
 jobs:
   test:
