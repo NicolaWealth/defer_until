@@ -51,5 +51,10 @@ jobs:
           git commit -m "Automated commit"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push origin covBranch/main
+
+      - name: Automatic PR and Merge
+        run: |
+          gh pr create --title "Update Coverage Badge" --body "Automated PR to update the coverage badge" --head covBranch/main --base main --label "coverage-update"
+          gh pr merge --auto --delete-branch --squash
       
 
