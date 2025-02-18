@@ -51,17 +51,22 @@ jobs:
           git add README.md
           git commit -m "Automated commit"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push origin covBranch/main
+ 
+      - name: Automatic PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: "Update Coverage Badge"
+          body: "Automated PR to update the coverage badge"
+          base: main
+          head: covBranch/main
+          labels: coverage-update
+          commit-message: "Update README.md with coverage badge"
+          path: README.md
 
-      - name: Install GitHub CLI
-        run: |
-          curl -fsSL https://cli.github.com/packages/githubcli.repo.gpg | sudo tee /usr/share/keyrings/githubcli.asc
-          sudo apt update
-          sudo apt install gh
-          
-      - name: Automatic PR and Merge
-        run: |
-          gh pr create --title "Update Coverage Badge" --body "Automated PR to update the coverage badge" --head covBranch/main --base main --label "coverage-update"
-          gh pr merge --auto --delete-branch --squash
+      - name: Automatically merge PR using peter-evans/merge-pull-request
+        uses: peter-evans/merge-pull-request@v4
+        with:
+          pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
+          merge-method: squash
       
 
