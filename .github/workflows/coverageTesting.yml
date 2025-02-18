@@ -21,8 +21,6 @@ jobs:
       - run: npm ci
       - run: npm run cover:report
 
-
-
       - name: Run coverage extraction script
         id: extract_coverage
         run: |
@@ -44,15 +42,14 @@ jobs:
 
       - name: Update README.md with coverage value
         run: |
+          git checkout -b covBranch/main
           sed -i "s|!\\[Coverage Badge\\](.*)|![Coverage Badge](https://img.shields.io/badge/coverage-${{ env.COVERAGE }}%25-green)|" README.md
 
       - name: Push changes to main
-        env:
-          PAT: ${{ secrets.PAT }}
         run: |
           git add README.md
           git commit -m "Automated commit"
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
-          git push origin main
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push origin covBranch/main
       
 
