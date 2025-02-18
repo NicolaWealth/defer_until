@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write  # Ensure GITHUB_TOKEN has write access
+  pull-requests: write
 
 jobs:
   test:
