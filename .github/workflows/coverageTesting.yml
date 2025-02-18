@@ -43,6 +43,7 @@ jobs:
       - name: Update README.md with coverage value
         run: |
           git checkout -b covBranch/main
+          git pull origin covBranch/main || echo "No remote changes to pull"
           sed -i "s|!\\[Coverage Badge\\](.*)|![Coverage Badge](https://img.shields.io/badge/coverage-${{ env.COVERAGE }}%25-green)|" README.md
 
       - name: Push changes to main
