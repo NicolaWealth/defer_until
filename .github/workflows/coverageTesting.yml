@@ -52,21 +52,9 @@ jobs:
           git commit -m "Automated commit"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
  
-      - name: Automatic PR
-        uses: peter-evans/create-pull-request@v4
-        with:
-          title: "Update Coverage Badge"
-          body: "Automated PR to update the coverage badge"
-          base: main
-          head: covBranch/main
-          labels: coverage-update
-          commit-message: "Update README.md with coverage badge"
-          path: README.md
-
-      - name: Automatically merge PR using peter-evans/merge-pull-request
-        uses: peter-evans/merge-pull-request@v4
-        with:
-          pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
-          merge-method: squash
-      
-
+      - name: Automatic PR & Merge
+        run: |
+           gh pr create --title "Update Coverage Badge" --body "Automated PR to update the coverage badge" --head covBranch/main --base main --label "coverage-update"
+           gh pr merge --auto --delete-branch --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
