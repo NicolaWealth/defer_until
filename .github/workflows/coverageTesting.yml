@@ -61,7 +61,7 @@ jobs:
 
       - name: Automatic PR & Merge
         run: |
-           gh pr create --title "Update Coverage Badge" --body "Automated PR to update the coverage badge" --head covBranch/main --base main --label "coverage-update"
+           gh pr create --title "Update Coverage Badge" --body "Automated PR to update the coverage badge" --head covBranch/main --base main
            gh pr merge --auto --delete-branch --squash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
