@@ -1,5 +1,5 @@
 ![Tests Passing](https://github.com/NicolaWealth/defer_until/actions/workflows/autoTestMainBadge.yml/badge.svg)
-![Coverage Badge](https://img.shields.io/badge/coverage-99%25-green)
+![Coverage Badge](https://img.shields.io/badge/coverage-100.00%25-green)
 
 # Introduction 
 The `defer_until` package enables many functions to be added to a deferred stack, which can then be executed at any time.
