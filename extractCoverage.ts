@@ -13,4 +13,15 @@ for (let path in coverageData) {
   coveredStatements += Object.values(statementMap).filter((value: number) => value > 0).length;
 }
 const coveragePercentage = (coveredStatements / totalStatements) * 100;
-console.log(coveragePercentage.toFixed(2));
+
+const badgeData = {
+  label: 'coverage',
+  message: `${coveragePercentage}%`,
+  color: coveragePercentage >= 90 ? 'brightgreen' :
+          coveragePercentage >= 70 ? 'yellowgreen' :
+          coveragePercentage >= 50 ? 'yellow' :
+        'red'
+};
+
+const outputFile = './badge.json';
+fs.writeFileSync(outputFile, JSON.stringify(badgeData, null, 2), 'utf-8');
