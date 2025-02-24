@@ -44,10 +44,10 @@ jobs:
           echo "Current remote URL:"
           git remote -v
 
-          - name: Echo the PAT (masked for safety)
-          run: |
-            echo "Using PAT: ${{ secrets.PAT }}"
-            echo "::add-mask::${{ secrets.PAT }}"  # This masks the token in the logs
+      - name: Echo the PAT (masked for safety)
+        run: |
+          echo "Using PAT: ${{ secrets.PAT }}"
+          echo "::add-mask::${{ secrets.PAT }}"  # This masks the token in the logs
 
 
       - name: Push changes to main
