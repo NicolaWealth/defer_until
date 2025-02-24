@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-    if: github.actor != 'github-actions[bot]'
 
 permissions:
   contents: write  # Ensure GITHUB_TOKEN has write access
@@ -39,10 +38,22 @@ jobs:
       - name: Mark the repository as safe
         run: git config --global --add safe.directory /__w/defer_until/defer_until
 
+      - name: Verify remote URL
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
+          echo "Current remote URL:"
+          git remote -v
+
+          - name: Echo the PAT (masked for safety)
+          run: |
+            echo "Using PAT: ${{ secrets.PAT }}"
+            echo "::add-mask::${{ secrets.PAT }}"  # This masks the token in the logs
+
+
       - name: Push changes to main
         run: |
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
           git add badge.json
           git commit -m "Automated commit"
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
           git push origin main
       
