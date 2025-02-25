@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:22
-    if: github.actor != 'github-actions'  
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -49,7 +49,7 @@ jobs:
       - name: Push changes to main
         run: |
           git status
-          if git diff --quiet codecov/badge.json; then
+          if ! git diff --quiet codecov/badge.json; then
             git add codecov/badge.json
             git commit -m "Automated commit"
             git push origin main
