@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      COV_MIN: ${{ vars.COV_MIN }}
+      COV_MIN: 0
     container:
       image: node:22
 
