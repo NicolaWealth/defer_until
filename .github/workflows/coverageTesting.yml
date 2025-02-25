@@ -40,6 +40,7 @@ jobs:
 
       - name: Verify remote URL
         run: |
+          git config - -global - -unset credential.helper
           git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
           echo "Current remote URL:"
           git remote -v
