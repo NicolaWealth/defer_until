@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:22
-    environment: codeCov  
     steps:
       - uses: actions/checkout@v3
         with:
@@ -47,7 +46,8 @@ jobs:
 
       - name: Push changes to main
         run: |
-          git add badge.json
-          git commit -m "Automated commit"
-          git push origin main
+          if git diff --quiet HEAD^ HEAD badge.json 
+            git add badge.json
+            git commit -m "Automated commit"
+            git push origin main
       
