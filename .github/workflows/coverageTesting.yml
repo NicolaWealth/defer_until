@@ -48,6 +48,7 @@ jobs:
 
       - name: Push changes to main
         run: |
+          git status
           if git diff --quiet codecov/badge.json; then
             git add codecov/badge.json
             git commit -m "Automated commit"
