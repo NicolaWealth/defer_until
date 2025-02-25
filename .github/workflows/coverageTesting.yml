@@ -12,6 +12,8 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      COV_MIN: ${{ vars.COV_MIN }}
     container:
       image: node:22
 
