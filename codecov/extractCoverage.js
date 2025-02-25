@@ -14,8 +14,8 @@ for (var path in coverageData) {
 }
 var coveragePercentage = (coveredStatements / totalStatements) * 100;
 var badgeData = {
-    label: 'coverage',
-    message: "50%",
+    label: 'Coverage',
+    message: "".concat(coveragePercentage, "%"),
     color: coveragePercentage >= 90 ? 'brightgreen' :
         coveragePercentage >= 70 ? 'yellowgreen' :
             coveragePercentage >= 50 ? 'yellow' :
