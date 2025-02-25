@@ -15,13 +15,13 @@ for (let path in coverageData) {
 const coveragePercentage = (coveredStatements / totalStatements) * 100;
 
 const badgeData = {
-  label: 'coverage',
-  message: `50%`,
+  label: 'Coverage',
+  message: `${coveragePercentage}%`,
   color: coveragePercentage >= 90 ? 'brightgreen' :
           coveragePercentage >= 70 ? 'yellowgreen' :
           coveragePercentage >= 50 ? 'yellow' :
         'red'
 };
 
-const outputFile = './badge.json';
+const outputFile = 'codecov/badge.json';
 fs.writeFileSync(outputFile, JSON.stringify(badgeData, null, 2), 'utf-8');
