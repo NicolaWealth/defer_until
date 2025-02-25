@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          token: ${{ secrets.PAT }}
           node-version: 22
       - run: npm ci
       - run: npm run cover:report
