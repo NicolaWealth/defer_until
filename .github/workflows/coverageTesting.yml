@@ -52,5 +52,5 @@ jobs:
             git add codecov/badge.json
             git commit -m "Automated commit"
             git push origin main
-         fi
+          fi
       
