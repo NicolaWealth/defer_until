@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - main
-
-permissions:
-  contents: write  # Ensure GITHUB_TOKEN has write access
-  pull-requests: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -46,7 +41,7 @@ jobs:
 
       - name: Push changes to main
         run: |
-          if git diff --quiet HEAD^ HEAD -- badge.json; then 
+          if git diff --quiet badge.json; then 
             git add badge.json
             git commit -m "Automated commit"
             git push origin main
