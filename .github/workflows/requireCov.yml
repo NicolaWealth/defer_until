@@ -1,0 +1,38 @@
+name: Coverage Check on PR
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      COV_MIN: 0
+    container:
+      image: node:22
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run cover:report
+
+      - name: Run coverage extraction script
+        id: extract_coverage
+        run: |
+          COVERAGE=$(node codecov/extractCoverage.js)
+
+      - name: Confirm Coverage Value
+        run: |
+          if [ "$COVERAGE" -ne 100 ]; then
+            echo "Assertion failed: Coverage is not 100%"
+            exit 1
+          else
+            echo "Assertion passed: Coverage is 100%"
+          fi
+
+
+
+      
