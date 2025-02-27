@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  test:
+  coverage:
     runs-on: ubuntu-latest
     env:
       COV_MIN: 0
