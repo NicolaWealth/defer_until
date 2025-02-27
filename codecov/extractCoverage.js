@@ -23,3 +23,4 @@ var badgeData = {
 };
 var outputFile = 'codecov/badge.json';
 fs.writeFileSync(outputFile, JSON.stringify(badgeData, null, 2), 'utf-8');
+console.log(coveragePercentage);
