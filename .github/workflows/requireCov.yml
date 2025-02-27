@@ -24,14 +24,16 @@ jobs:
         run: |
           COVERAGE=$(node codecov/extractCoverage.js)
           COVERAGE=$(echo $COVERAGE | xargs)
-          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV  # Save to environment
 
       - name: Confirm Coverage Value
         run: |
+          echo "COVERAGE=$COVERAGE"
           if [ "$COVERAGE" -ne 100 ]; then
             echo "Assertion failed: Coverage is not 100% (Actual: $COVERAGE%)"
             exit 1
           else
             echo "Assertion passed: Coverage is 100%"
           fi
-          
+        env:
+          COVERAGE: ${{ env.COVERAGE }}
