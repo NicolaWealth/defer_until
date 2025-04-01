@@ -1,4 +1,4 @@
-![Tests Passing](https://github.com/NicolaWealth/defer_until/actions/workflows/autoTestMainBadge.yml/badge.svg)
+![Tests Passing](https://github.com/NicolaWealth/defer_until/actions/workflows/auto_test_main_badge.yml/badge.svg)
 ![Code Cov](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fnicolawealth%2Fdefer_until%2Fraw%2Fmain%2Fcodecov/badge.json&query=%24.message&label=Code%20Coverage&color=%24.color)
 
 # Introduction 
