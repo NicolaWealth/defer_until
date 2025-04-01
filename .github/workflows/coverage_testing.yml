@@ -28,7 +28,7 @@ jobs:
       - name: Run coverage extraction script
         id: extract_coverage
         run: |
-          COVERAGE=$(node codecov/extractCoverage.js)
+          COVERAGE=$(node codecov/extract_coverage.js)
 
       - name: Print Coverage Value
         run: |

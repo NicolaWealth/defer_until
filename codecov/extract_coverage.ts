@@ -18,8 +18,8 @@ const badgeData = {
   label: 'Coverage',
   message: `${coveragePercentage}%`,
   color: coveragePercentage >= 90 ? 'brightgreen' :
-          coveragePercentage >= 70 ? 'yellowgreen' :
-          coveragePercentage >= 50 ? 'yellow' :
+    coveragePercentage >= 70 ? 'yellowgreen' :
+      coveragePercentage >= 50 ? 'yellow' :
         'red'
 };
 
