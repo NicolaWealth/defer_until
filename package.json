@@ -37,6 +37,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@nicolawealth/code_coverage_extractor": "^2",
     "typescript": "^5",
     "eslint": "^9",
     "@typescript-eslint/eslint-plugin": "^8",

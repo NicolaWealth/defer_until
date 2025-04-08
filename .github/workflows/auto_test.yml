@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    # Using Ubuntun (most common OS used with github actions but can also linux, and some other options)  
+    # Using Ubuntu
     runs-on: ubuntu-latest 
     container:
       # Using Node JS Version 22
@@ -24,4 +24,3 @@ jobs:
       - run: npm test
       # Run Build Script      
       - run: npm run build                                                          
-
