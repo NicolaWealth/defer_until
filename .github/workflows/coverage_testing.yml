@@ -44,8 +44,8 @@ jobs:
 
       - name: Set Git user identity
         run: |
-          git config --global user.email "skyehaik@rogers.com"
-          git config --global user.name "skyehaik"
+          git config --global user.email "software@nicolawealth.com"
+          git config --global user.name "actlion"
 
       - name: Mark the repository as safe
         run: git config --global --add safe.directory /__w/defer_until/defer_until
