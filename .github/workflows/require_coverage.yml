@@ -31,14 +31,16 @@ jobs:
           console.log(result);
           ")
           COVERAGE=$(echo $COVERAGE | xargs)
-          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+          INT_COV=${COVERAGE%.*}
+          echo "INT_COV=$INT_COV" >> $GITHUB_ENV
       
       - name: Confirm Coverage Value
         run: |
           # Check if the coverage value is 100% and fail if it's not
-          if [ "$COVERAGE" -ne 100 ]; then
-            echo "Assertion failed: Coverage is not 100% (Actual: $COVERAGE%)"
+            if [ "$INT_COV" -ne 100 ]; then
+            echo "Assertion failed: Coverage is not 100% (Actual: $INT_COV%)"
             exit 1
           else
             echo "Assertion passed: Coverage is 100%"
           fi
+          
