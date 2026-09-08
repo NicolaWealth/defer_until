@@ -33,7 +33,7 @@
     "doc": "npx typedoc src/*.ts src/**/*.ts --out dist/doc"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "devDependencies": {
     "@nicolawealth/code_coverage_extractor": "^2",
