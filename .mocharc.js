@@ -3,7 +3,7 @@ module.exports = {
     "ts-node/register",
     "source-map-support/register",
   ],
-  reporter: "mocha-junit-reporter",
+  reporter: "spec",
   "full-trace": true,
   color: true,
   bail: true,
