@@ -4,7 +4,7 @@ module.exports = {
     "source-map-support/register",
   ],
   reporter: "spec",
-  "full-trace": true,
+  fullTrace: true,
   color: true,
   bail: true,
   spec: "src/**/*.test.ts",
